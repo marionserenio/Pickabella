@@ -1,0 +1,415 @@
+/*!
+ * Bootstrap v2.0.0
+ *
+ * Copyright 2012 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ */
+
+// CSS Reset
+@import "reset.less";
+
+// Core variables and mixins
+@import "variables.less"; // Modify this for custom colors, font-sizes, etc
+@import "mixins.less";
+
+// Grid system and page structure
+@import "scaffolding.less";
+@import "grid.less";
+@import "layouts.less";
+
+// Base CSS
+@import "type.less";
+@import "code.less";
+@import "forms.less";
+@import "tables.less";
+
+// Components: common
+@import "sprites.less";
+@import "dropdowns.less";
+@import "wells.less";
+@import "component-animations.less";
+@import "close.less";
+
+// Components: Buttons & Alerts
+@import "buttons.less";
+@import "button-groups.less";
+@import "alerts.less"; // Note: alerts share common CSS with buttons and thus have styles in buttons.less
+
+// Components: Nav
+@import "navs.less";
+@import "navbar.less";
+@import "breadcrumbs.less";
+@import "pagination.less";
+@import "pager.less";
+
+// Components: Popovers
+@import "modals.less";
+@import "tooltip.less";
+@import "popovers.less";
+
+// Components: Misc
+@import "thumbnails.less";
+@import "labels.less";
+@import "progress-bars.less";
+@import "accordion.less";
+@import "carousel.less";
+@import "hero-unit.less";
+
+// Utility classes
+@import "utilities.less"; // Has to be last to override when necessary
+
+@media print {
+  * { background: transparent !important; color: black !important; box-shadow:none !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: h5bp.com/s */
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* h5bp.com/t */
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+//helper functions
+.red(){
+  background-color:red;
+}
+
+//classes
+.active{
+  color:#efefef;
+   padding-top:3px;
+   background-color:#00a7ff;
+   .border-radius(3px);
+   .gradientBar(@buttontop, @buttonbot); 
+   border:1px solid @buttonborder;
+   .box-shadow(0px 1px 0px @buttonbordertop inset);
+    a{
+      color:#efefef;
+      text-decoration:none;
+    }
+}
+.active2{
+  color:#efefef;
+   padding-top:3px;
+   background-color:#00a7ff;
+   .border-radius(3px);
+   .gradientBar(@buttontop, @buttonbot); 
+   border:1px solid @buttonborder;
+   margin-top:-30px;
+   .box-shadow(0px 1px 0px @buttonbordertop inset);
+ }
+.applybutton{
+  color:#efefef;
+   padding-top:3px;
+   background-color:#00a7ff;
+   .border-radius(3px);
+   .gradientBar(@buttontop, @buttonbot); 
+   border:1px solid @buttonborder;
+   .box-shadow(0px 1px 0px @buttonbordertop inset);
+   padding-left:6px;
+   padding-right:6px;
+   .transition(1s);
+   &:hover{
+      .gradientBar(@buttontop + -20%, @buttonbot + -20%); 
+   }
+}
+.img_confirm{
+  background-color:#efefef;
+  padding:2px;
+  border:1px solid #dcdcdc;
+}
+.Verdana(){
+    font-family:"Verdana", "Arial", Sans-serif;
+}
+.error{
+  color:red;
+}
+
+
+//custom styles
+body{
+ background-image:url(../img/stripes_bg.png); 
+}
+header{
+	margin-top:60px;
+  position:relative;
+  .red();
+
+    nav{
+      position:absolute;
+      right:0px;
+        ul{
+          list-style:none;
+            li{
+              float:left;
+              margin-left:18px;
+              margin-right:18px;
+              padding-left:27px;
+              padding-right:27px;
+              padding-top:3px;
+              padding-bottom:3px;
+              font-size:10px;
+              .Verdana();
+              border:1px solid transparent;
+              .transition(1s);
+                a{
+                  color:#333;
+                }
+                &:hover,{
+                  padding-top:3px;
+                  background-color:#00a7ff;
+                  .border-radius(3px);
+                  .gradientBar(@buttontop, @buttonbot); 
+                  border:1px solid @buttonborder;
+                  .box-shadow(0px 1px 0px @buttonbordertop inset);
+                      a{
+                         color:#efefef;
+                         text-decoration:none;
+                      }
+                     
+                        }                
+            }
+        }
+    }
+}
+#main{
+  width:100%;
+  float:left;
+  margin-top:50px;
+  #insta{
+    margin-left:0px;
+    width:600px;
+    height:185px;
+    background-image:url(../img/sprite.png);
+      
+  }
+  figcaption{
+    color:@buttonbot;
+  }
+  #mainContent{
+    margin-top:20px;
+    float:left;
+  }
+  #recommended{
+    width:527px;
+    height:261px;
+    background-image:url(../img/recommended.png); 
+    margin-bottom:20px; 
+  }
+  #about{
+    background-image:url(../img/about.png);
+    background-repeat:no-repeat; 
+    padding-top:40px; 
+    margin-left:-20px;
+      h2{
+        font-size:2.7em;
+        letter-spacing:-1px;
+        .Verdana();
+        color:@buttonbot + -10%;
+        text-shadow: 0px 2px 3px #fff;
+      }
+      p{
+        .Verdana();
+        font-size:0.8em;
+      }
+  }
+  #Whatisit{
+    background-image:url(../img/what.png);
+    background-repeat:no-repeat; 
+    margin-left:0px;
+    padding-top:40px; 
+    p{
+      .Verdana();
+      font-size:0.8em;
+    }
+    ul{
+      list-style:none;
+      margin-left:-10px;
+      li{
+        padding-left:20px;
+        .Verdana();
+        margin-bottom:7px;
+        font-size:0.8em;
+        span{
+          margin-left:20px;
+        }
+      }
+    }
+  }
+  #advantages{
+    background-image:url(../img/advantages.png);
+    background-repeat:no-repeat; 
+    margin-left:0px;
+    padding-top:40px;
+    a{
+      .Verdana();
+      font-size:0.8em;
+    }
+    ul{
+      list-style:none;
+      margin-left:-10px;
+      li{
+        padding-left:20px;
+        .Verdana();
+        font-size:0.8em;
+        margin-bottom:7px;
+        span{
+          margin-left:20px;
+          white-space: pre;
+        }
+      }
+    }
+
+  }
+}
+#apply {
+margin-bottom:20px;
+a img{
+  margin-top:50px;
+    margin-left:30%;
+    .transition(0.5s);
+    &:hover{
+      margin-top:45px;
+    }
+}
+}
+
+footer{
+  margin-top:20px;
+  p{
+    text-align:center;
+    .Verdana();
+    font-size:0.8em;
+    color:@buttonbot;
+  }
+}
+
+//faqs.php
+#faqs{
+  width:565px;
+  background-image:url(../img/faqs.png);
+  height:175px;
+}
+#FaqContent{
+  margin-top:30px;
+  h2{
+    color:@buttonbot;
+  }
+  h3{
+    font-size:1.3em;
+    color:#333;
+    float:left;
+  }
+  .h2icon{
+    margin-top:6px;
+    margin-left:10px;
+    cursor:pointer;
+  }
+  p{
+    .Verdana();
+    float:left;
+    font-size:11px;
+    margin-top:5px;
+  }
+  ul{
+    list-style:none;
+    li{
+      margin-bottom:10px;
+    }
+  }
+}
+
+//apply.php
+#applyContainer{
+  #applyform{
+    margin-top:30px;
+  }
+  h1{
+    font-size:1.8em;
+    color:@buttonbot;
+  }
+  h2{
+     font-size:1.4em;
+     color:@buttonbot + -20%;
+  }
+  #address{
+    margin-left:0px;
+  }
+}
+#applyLoad{
+  margin-left:-25px;
+  height:82px;
+  width:975px;
+  background-image:url(../img/apply_sign.png);
+  
+}
+.step2{
+    background-position:0px -82px;
+  }
+.step3{
+    background-position:0px -165px;
+  }
+  .step4{
+    background-position:0px -250px;
+  }
+  .step4{
+    background-position:0px -335px;
+  }     
+#login{
+  width:100%;
+  height:35px;
+  background-color:#231F20;
+  top:-31px;
+  position:absolute;
+  .transition(0.5s);
+  .Verdana();
+  #logintongue{
+    margin-left:80%;
+    margin-top:35px;
+  }
+  .welcome{
+    color:#888;
+    font-size:11px;
+  }
+  .user a {
+    font-weight:bold;
+    font-size:11px;
+    color:#555;
+  }
+  .logout a{
+    font-size:11px;
+    margin-left:5px;
+    color:#777;
+    text-decoration:underline;
+  }
+  &:hover{
+    padding-top:40px;
+  }
+  ul{
+    margin-left:70%;
+    margin-top:5px;
+    list-style:none;
+    li{
+      float:left;
+      margin-left:1px;
+      margin-right:20px;
+      padding-right:10px;
+    
+    
+      i{
+        margin-right:10px;
+      }
+      a{
+        font-size:11px;
+        color:@buttontop;
+        .Verdana();
+      }
+    }
+  }
+}
